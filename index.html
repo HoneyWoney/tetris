@@ -4,45 +4,55 @@
   <meta charset="UTF-8">
   <title>Tetris with Next Piece & Touch Controls</title>
   <style>
-    /* 화면 전체 스타일 */
+    /* 화면 전체 스타일 (배경 밝은 톤, 글자색 어둡게) */
     html, body {
       margin: 0;
       padding: 0;
-      background-color: #222;
+      background-color: #f5f5f5; /* 밝은 톤 배경 */
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
       box-sizing: border-box;
       font-family: sans-serif;
-      color: #fff;
+      color: #333; /* 어두운 폰트 */
     }
 
     /* 메인 컨테이너: 게임 화면 + 다음 블록 + 조작 버튼 */
     .game-container {
       display: flex;
-      flex-direction: column; 
+      flex-direction: column;
       align-items: center;
       gap: 16px;
+      /* 구분선 및 여백 */
+      border: 2px solid #ddd;
+      padding: 16px;
+      background-color: #fff; /* 살짝 더 밝게 */
+      border-radius: 8px;
     }
 
     /* 위쪽: 메인 게임 + 다음 블록 캔버스 가로 배치 */
     .canvas-area {
       display: flex;
       gap: 16px;
+      /* 구분선 및 여백 */
+      border: 1px dashed #ccc;
+      padding: 16px;
+      border-radius: 8px;
+      background-color: #fafafa;
     }
 
     /* 메인 테트리스 캔버스 */
     #tetris {
       background-color: #000;
-      border: 2px solid #fff;
+      border: 2px solid #ddd;
       image-rendering: pixelated;
     }
 
     /* 다음 블록 표시용 캔버스 */
     #next {
       background-color: #000;
-      border: 2px solid #fff;
+      border: 2px solid #ddd;
       image-rendering: pixelated;
     }
 
@@ -52,12 +62,17 @@
       flex-wrap: wrap;
       gap: 8px;
       justify-content: center;
+      /* 구분선 및 여백 */
+      border: 1px dashed #ccc;
+      padding: 16px;
+      border-radius: 8px;
+      background-color: #fafafa;
     }
 
     /* 공통 버튼 스타일 */
     .controls button {
-      background: #444;
-      color: #fff;
+      background: #ddd; /* 전보다 밝게 */
+      color: #333;
       border: 1px solid #999;
       border-radius: 4px;
       padding: 12px;
@@ -65,9 +80,10 @@
       cursor: pointer;
       min-width: 60px;
       outline: none;
+      transition: background 0.2s;
     }
     .controls button:active {
-      background: #666;
+      background: #ccc;
     }
   </style>
 </head>
@@ -269,13 +285,13 @@
     // 블록 숫자 -> 색상
     function getColor(value) {
       switch (value) {
-        case 1: return 'cyan';   
-        case 2: return 'yellow'; 
-        case 3: return 'purple'; 
-        case 4: return 'green';  
-        case 5: return 'red';    
-        case 6: return 'blue';   
-        case 7: return 'orange'; 
+        case 1: return 'cyan';
+        case 2: return 'yellow';
+        case 3: return 'purple';
+        case 4: return 'green';
+        case 5: return 'red';
+        case 6: return 'blue';
+        case 7: return 'orange';
       }
       return 'white';
     }
